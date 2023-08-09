@@ -1,0 +1,142 @@
+﻿html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smooth Pick-up Lines</title>
+    <style>
+        body {
+            background-color: #f7e7d0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            color: #bf5b36;
+            margin-top: 2rem;
+        }
+
+        button {
+            background-color: #bf5b36;
+            color: #fff;
+            font-size: 1.5rem;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            margin-top: 2rem;
+            cursor: pointer;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+            button:hover {
+                opacity: 0.8;
+            }
+
+        #pickupLine {
+            font-size: 2rem;
+            text-align: center;
+            color: #bf5b36;
+            margin-top: 2rem;
+        }
+    </style>
+    <script>
+        var lastLetter = '';
+        var pickupLines = [
+            "Is your name Google? Because you have everything I've been searching for.",
+            "Do you have a map? I keep getting lost in your eyes.",
+            "Is your dad a magician? Because whenever I look at you, everyone else disappears.",
+            "Excuse me, miss, can I have just one moment of your time so I can tell you how stunningly gorgeous you are?",
+            "Are you a bank loan? Because you're definitely gaining my interest.",
+            "I lost my phone number, can I have yours instead?",
+            "You must be a ninja, because you snuck up on me and stole my heart.",
+            "Are you an alien? Because you just abducted my heart.",
+            "I must be a snowflake, because I've fallen for you.",
+            "I'm not a photographer, but I can definitely picture us together.",
+            "They say happiness starts with an H. But mine starts with U.",
+            "I seem to have lost my phone number. Can I have yours?",
+            "You know what's bit-sized, adorable and extremely good looking? My text reply value to your next message!",
+            "Can I follow you where you go to the gym so I can work out in amazing proximity to you and perhaps sneakily smell your hair when you’re not looking? Kidding. But am I?",
+            "I believe in love at first swipe.",
+            "That was so cute, it gave me a lady boner.",
+            "If you let me borrow a kiss, I promise I'll give it back.",
+            "Do you have a name? Or can I call you mine?",
+            "I lost my teddy bear. Can I cuddle with you instead?",
+            "Do you have a Band-Aid? I just scraped my knee falling for you.",
+            "Do you believe in love at first sight? Or should I walk by again?",
+            "I would flirt with you, but I’d rather seduce you with my awkwardness",
+            "Do you have a map, because I just got lost in your eyes.",
+            "I'm not a genie, but I can make your dreams come true.",
+            "I must be a snowflake, because I've fallen for you.",
+            "Do you have a Band-Aid? Because I just scraped my knee falling for you.",
+            "I must be a shooting star because I’ve fallen for you.",
+            "I seem to have lost my phone number. Can I have yours?",
+            "Are you a magician? Every time I look at you, everyone else disappears.",
+            "Excuse me, miss, but can I have a moment of your time? I promise I'll make it worth it.",
+            "You must be a ninja, because you snuck up on me and stole my heart.",
+            "Do you believe in love at first sight or should I walk by again?",
+            "Is your name Google? Because you have everything I've been searching for.",
+            "Is your dad a baker? Because you're a cutie pie!",
+            "I hope you know CPR, because you are taking my breath away!",
+            "Is your name Wi-Fi? Because I'm feeling a connection.",
+            "Are you related to Yoda? Because yodalicious!",
+            "If you were a vegetable, you'd be a cutecumber.",
+            "Is your nickname Chapstick? Because you're the balm!",
+            "Are you Australian? Because when I look at you, I feel like I'm down under.",
+            "Do you mind if I walk you home? My mother always told me to follow my dreams.",
+            "If beauty was an hour, you'd be a second for me.",
+            "Aside from being stunning, what else do you do for a living?",
+            "Is your dad an alien because you are out of this world!",
+            "Do you have a twin? Then you must be the most beautiful person in the world.",
+            "You look familiar. Did we take a class together? Because I swear we have chemistry.",
+            "You must be a magician. Because every time I look at you, everyone else disappears.",
+            // New pick-up lines
+            "Knock Knock! Who’s there? Orange! Orange who? Orange you stunning.",
+            "Knock Knock! Who’s there? Al! Al who? Al give you a kiss if you open this door!",
+            "Knock Knock! Who’s there? India! India who? What’s it gonna take to get Indian pants?",
+            "Knock knock! Who’s there? When where! When, where, who? Tonight, my place, me and you.",
+            "Knock knock! Who’s there? Ivan! Ivan who? Ivan to do something naughty with you.",
+            "Knock knock! Who’s there? Needle! Needle who? Needle little love right now.",
+            "Knock knock! Who’s there? Justin! Justin who? Justin, time to give you a kiss.",
+            "Knock knock! Who’s there? Baby owl! Baby owl, who? Baby owl, see you later at my place.",
+            "Knock Knock! Who’s there? Baby yoda. Baby Yoda, who? Baby, Yoda, one I want.",
+            "Knock-knock. Who’s there? Quinoa. Quinoa who? Quinoa be my Valentine?",
+            "Knock-knock. Who’s there? Espresso. Espresso who? Espresso, your number to me?",
+            "Knock-knock. Who’s there? Cashew. Cashew who? Cashew later, I will still be here waiting for you.",
+            "Knock-knock. Who’s there? Sherbet. Sherbet who? Sherbet, you can’t resist my charm.",
+            "Knock-knock. Who’s there? Skye. Skye who? Skye’s the limit for our love.",
+            "Knock-knock. Who’s there? Mango. Mango who? Mango out with me?",
+            "Knock-knock. Who’s there? Olive. Olive who? Olive, you, and I can’t live without you.",
+            "Knock-knock. Who’s there? Butter. Butter who? Butter, let me take you out on a date.",
+            "Knock-knock. Who’s there? Lettuce. Lettuce who? Lettuce, go out and have dinner together.",
+            "Knock-knock. Who’s there? Noah. Noah who? Noah guy quite like you, and he’s so cute.",
+            "Knock-knock. Who’s there? Juno. Juno who? Juno, we would look great together?",
+            "Knock-knock. Who’s there? Beets. Beets who? Beets me, but I think I am in love with you.",
+            "Knock Knock! Who’s there? Pauline! Pauline who? I think I’m Pauline in love with you.",
+            "Knock Knock! Who’s there! Honeydew! Honeydew who? Honeydew you know how fine you look right now?",
+            "Knock Knock! Who’s there? I love you! I love you who? Don’t ask who because it’s you.",
+            "Knock Knock! Who’s there? De Niro! De Niro who? De Niro I am to you, the more beautiful you get.",
+            "Knock Knock! Who’s there? Aldo! Aldo who? Aldo anything for you!",
+            "Knock Knock! Who’s there? Egg! Egg who? Eggcited to meet you."
+            // Add remaining lines here
+        ];
+
+        function getRandomPickupLine() {
+            var pickupLine = '';
+
+            do {
+                var randomIndex = Math.floor(Math.random() * pickupLines.length);
+                pickupLine = pickupLines[randomIndex];
+            } while (pickupLine.charAt(0).toUpperCase() === lastLetter.toUpperCase())
+
+            lastLetter = pickupLine.charAt(pickupLine.length - 1).toUpperCase();
+
+            document.getElementById("pickupLine").innerHTML = pickupLine;
+        }
+    </script>
+</head>
+<body>
+    <h1>Smooth Pick-up Lines</h1>
+    <button onclick="getRandomPickupLine()">Get a Pick-up Line</button>
+    <p id="pickupLine"></p>
+</body>
+</html>
